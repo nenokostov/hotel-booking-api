@@ -1,0 +1,1100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Hotel Booking API",
+        "description": "API endpoints for managing hotel bookings",
+        "contact": {
+            "email": "contact@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/bookings": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Get all bookings",
+                "operationId": "afb8b225fc78962125d01a6c8e8af2ae",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/BookingWithId"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Create a new booking",
+                "operationId": "2911657b7059f988a4bc398a1d21e68f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookingPOST"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Booking created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookingWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/bookings/{id}": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Get a booking by ID",
+                "operationId": "4b13c909d897a5edd245741a4aafd9d2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the booking",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookingWithId"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Booking not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Update a booking by ID",
+                "operationId": "6f58c5d17bbc7034b229d97390054811",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the booking",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookingPUT"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Booking updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookingWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Booking not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Delete a booking by ID",
+                "operationId": "dc3a5e70d8c1811d5888122376cf81b3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the booking",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Booking deleted successfully"
+                    },
+                    "404": {
+                        "description": "Booking not found"
+                    }
+                }
+            }
+        },
+        "/customers": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get all customers",
+                "operationId": "30ce4124bc07a0d013b69974ff225a5c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CustomerWithId"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Create a new customer",
+                "operationId": "8350a1a36d2b5522ea4158253eff28a1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerPOST"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Customer created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/customers/{id}": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get a customer by ID",
+                "operationId": "bb85afd644c1b965544c2f0e51f408b9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerWithId"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Update a customer by ID",
+                "operationId": "7f856cee51366cc0a4c5e1aa6a02547a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerPUT"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Customer updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Delete a customer by ID",
+                "operationId": "4cee47d6b826da6ed7d852b5aff46d19",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Customer deleted successfully"
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                }
+            }
+        },
+        "/payments": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Get all payments",
+                "operationId": "65567ad73dd4b0cc01c4856a6bb7e600",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PaymentWithId"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Create a new payment",
+                "operationId": "3cb7bc2c2ad5498b4ad9521811750cc1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentPOST"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Payment created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaymentWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Booking not found"
+                    }
+                }
+            }
+        },
+        "/payments/{id}": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Get a payment by ID",
+                "operationId": "a4207c19fecbebc99932a8348b19adf1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the payment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaymentWithId"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Payment not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Update a payment by ID",
+                "operationId": "7f3042f886092282c90cf678fa8b0d78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the payment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentPUT"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Payment updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaymentWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Booking not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Delete a payment by ID",
+                "operationId": "6ee6ad54e3a047f39a06ffcb4cfc6b7a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the payment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Payment deleted successfully"
+                    },
+                    "404": {
+                        "description": "Payment not found"
+                    }
+                }
+            }
+        },
+        "/rooms": {
+            "get": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Get all rooms",
+                "operationId": "getRooms",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RoomWithId"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Create a new room",
+                "operationId": "createRoom",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoomPOST"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Room created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoomWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/rooms/{id}": {
+            "get": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Get room by ID",
+                "operationId": "getRoomById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of room to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoomWithId"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Room not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Update a room",
+                "operationId": "updateRoom",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of room to update",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoomPUT"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Room updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoomWithId"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Room not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Delete a room",
+                "operationId": "deleteRoom",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of room to delete",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Room deleted successfully"
+                    },
+                    "404": {
+                        "description": "Room not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BookingPOST": {
+                "title": "Booking for POST",
+                "description": "Booking object",
+                "required": [
+                    "room_id",
+                    "customer_id",
+                    "check_in_date",
+                    "check_out_date"
+                ],
+                "properties": {
+                    "room_id": {
+                        "description": "ID of the room booked",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "customer_id": {
+                        "description": "ID of the customer who made the booking",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "check_in_date": {
+                        "description": "Check-in date for the booking",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-02-13"
+                    },
+                    "check_out_date": {
+                        "description": "Check-out date for the booking",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-02-15"
+                    }
+                },
+                "type": "object"
+            },
+            "BookingPUT": {
+                "title": "Booking for PUT",
+                "description": "Booking object",
+                "properties": {
+                    "room_id": {
+                        "description": "ID of the room booked",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "customer_id": {
+                        "description": "ID of the customer who made the booking",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "check_in_date": {
+                        "description": "Check-in date for the booking",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-02-13"
+                    },
+                    "check_out_date": {
+                        "description": "Check-out date for the booking",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-02-15"
+                    }
+                },
+                "type": "object"
+            },
+            "BookingWithId": {
+                "title": "Booking with ID",
+                "description": "Booking object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier for the booking",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "room_id": {
+                        "description": "ID of the room booked",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "customer_id": {
+                        "description": "ID of the customer who made the booking",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "check_in_date": {
+                        "description": "Check-in date for the booking",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-02-13"
+                    },
+                    "check_out_date": {
+                        "description": "Check-out date for the booking",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-02-15"
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the booking was created",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-13 12:00:00"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the booking was last updated",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-13 12:00:00"
+                    }
+                },
+                "type": "object"
+            },
+            "CustomerPOST": {
+                "title": "Customer for POST",
+                "description": "Customer object",
+                "required": [
+                    "name",
+                    "email",
+                    "phone_number"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Name of the customer",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "description": "Email of the customer",
+                        "type": "string",
+                        "example": "johnUpdated@example.com"
+                    },
+                    "phone_number": {
+                        "description": "Phone number of the customer",
+                        "type": "string",
+                        "example": 1234567890
+                    }
+                },
+                "type": "object"
+            },
+            "CustomerPUT": {
+                "title": "Customer for PUT",
+                "description": "Customer object",
+                "properties": {
+                    "name": {
+                        "description": "Name of the customer",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "description": "Email of the customer",
+                        "type": "string",
+                        "example": "johnUpdated@example.com"
+                    },
+                    "phone_number": {
+                        "description": "Phone number of the customer",
+                        "type": "string",
+                        "example": 1234567890
+                    }
+                },
+                "type": "object"
+            },
+            "CustomerWithId": {
+                "title": "Customer with ID",
+                "description": "Customer object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier for the customer",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "Name of the customer",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "description": "Email of the customer",
+                        "type": "string",
+                        "example": "johnUpdated@example.com"
+                    },
+                    "phone_number": {
+                        "description": "Phone number of the customer",
+                        "type": "string",
+                        "example": 1234567890
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the booking was created",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-13 12:00:00"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the booking was last updated",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-13 12:00:00"
+                    }
+                },
+                "type": "object"
+            },
+            "PaymentPOST": {
+                "title": "Payment for POST",
+                "description": "Payment object",
+                "required": [
+                    "booking_id",
+                    "amount",
+                    "payment_date",
+                    "status"
+                ],
+                "properties": {
+                    "booking_id": {
+                        "description": "ID of the booking associated with the payment",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "amount": {
+                        "description": "Amount of the payment",
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "payment_date": {
+                        "description": "Date of the payment",
+                        "type": "string",
+                        "example": "2024-02-13"
+                    },
+                    "status": {
+                        "description": "Status of the payment",
+                        "type": "string",
+                        "enum": [
+                            "completed",
+                            "pending",
+                            "failed"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "PaymentPUT": {
+                "title": "Payment for PUT",
+                "description": "Payment object",
+                "properties": {
+                    "booking_id": {
+                        "description": "ID of the booking associated with the payment",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "amount": {
+                        "description": "Amount of the payment",
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "payment_date": {
+                        "description": "Date of the payment",
+                        "type": "string",
+                        "example": "2024-02-13"
+                    },
+                    "status": {
+                        "description": "Status of the payment",
+                        "type": "string",
+                        "enum": [
+                            "completed",
+                            "pending",
+                            "failed"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "PaymentWithId": {
+                "title": "Payment with ID",
+                "description": "Payment object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier for the payment",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "booking_id": {
+                        "description": "ID of the booking associated with the payment",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "amount": {
+                        "description": "Amount of the payment",
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "payment_date": {
+                        "description": "Date of the payment",
+                        "type": "string",
+                        "example": "2024-02-13"
+                    },
+                    "status": {
+                        "description": "Status of the payment",
+                        "type": "string",
+                        "enum": [
+                            "completed",
+                            "pending",
+                            "failed"
+                        ]
+                    },
+                    "created_at": {
+                        "description": "Timestamp when the payment was created",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-13 12:00:00"
+                    },
+                    "updated_at": {
+                        "description": "Timestamp when the payment was last updated",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-02-13 12:00:00"
+                    }
+                },
+                "type": "object"
+            },
+            "RoomPOST": {
+                "title": "Room for POST",
+                "description": "Room object",
+                "required": [
+                    "number",
+                    "type",
+                    "price_per_night",
+                    "status"
+                ],
+                "properties": {
+                    "number": {
+                        "description": "Number of the room",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 101
+                    },
+                    "type": {
+                        "description": "Type of the room",
+                        "type": "string",
+                        "example": "Single"
+                    },
+                    "price_per_night": {
+                        "description": "Price per night for the room",
+                        "type": "number",
+                        "format": "double",
+                        "example": 100
+                    },
+                    "status": {
+                        "description": "Status of the room",
+                        "type": "string",
+                        "enum": [
+                            "available",
+                            "booked",
+                            "maintenance"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "RoomPUT": {
+                "title": "Room for PUT",
+                "description": "Room object",
+                "properties": {
+                    "number": {
+                        "description": "Number of the room",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 101
+                    },
+                    "type": {
+                        "description": "Type of the room",
+                        "type": "string",
+                        "example": "Single"
+                    },
+                    "price_per_night": {
+                        "description": "Price per night for the room",
+                        "type": "number",
+                        "format": "double",
+                        "example": 100
+                    },
+                    "status": {
+                        "description": "Status of the room",
+                        "type": "string",
+                        "enum": [
+                            "available",
+                            "booked",
+                            "maintenance"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "RoomWithId": {
+                "title": "Room with ID",
+                "description": "Room object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier for the room",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "number": {
+                        "description": "Number of the room",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 101
+                    },
+                    "type": {
+                        "description": "Type of the room",
+                        "type": "string",
+                        "example": "Single"
+                    },
+                    "price_per_night": {
+                        "description": "Price per night for the room",
+                        "type": "number",
+                        "format": "double",
+                        "example": 100
+                    },
+                    "status": {
+                        "description": "Status of the room",
+                        "type": "string",
+                        "enum": [
+                            "available",
+                            "booked",
+                            "maintenance"
+                        ]
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
